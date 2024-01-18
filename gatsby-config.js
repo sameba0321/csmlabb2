@@ -1,16 +1,25 @@
 /**
  * @type {import('gatsby').GatsbyConfig}
+ * 
  */
+require("dotenv").config();
+
 module.exports = {
   siteMetadata: {
     title: `My Gatsby Site`,
-    siteUrl: `https://www.yourdomain.tld`
+    siteUrl: `https://www.yourdomain.tld`,
+    menuLinks: [
+      {endpoint: "/", mame: "Home" },
+      {endpoint: "/portpage", name:"portfolio"},
+      {endpoint :"/about", name:"about" },
+      {endpoint: "/kontakt", name:"contact"},
+    ],
   },
   plugins: [{
     resolve: 'gatsby-source-contentful',
     options: {
-      "accessToken": "4m0n1uen1i0Rg-JtoH7mBZgKDGG4bnio7eYj-_v50aE",
-      "spaceId": "whtchnntgqs4"
+      accessToken: process.env.ACCESS_TOKEN,
+      spaceId: process.env.SPACE_ID,
     }
   }, "gatsby-plugin-image", "gatsby-plugin-sharp", "gatsby-transformer-sharp", "gatsby-plugin-postcss", {
     resolve: 'gatsby-source-filesystem',
